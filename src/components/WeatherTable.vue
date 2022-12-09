@@ -64,12 +64,12 @@ export default {
     const data = ref([])
     const day = ref(0)
 
-    const load = () => {
+    const load = async () => {
       try {
-        cities.value.map(async city => {
+        data.value = await Promise.all(cities.value.map(async city => {
           const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${city.latitude}&longitude=${city.longitude}&daily=temperature_2m_max,temperature_2m_min&current_weather=true&timezone=Africa%2FCairo`)
-          data.value.push({name: city.name, ...await res.json()})
-        })
+          return {name: city.name, ...await res.json()}
+        }))
       } catch (e) {}
     }
 
