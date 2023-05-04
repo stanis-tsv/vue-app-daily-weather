@@ -1,1 +1,1 @@
-DEMO LINK - https://stanis-tsv.github.io/daily-weather/
+DEMO LINK - https://snazzy-tulumba-89e697.netlify.app/
